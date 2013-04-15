@@ -6,7 +6,7 @@ module RetinaRailsTest
   class Application < Rails::Application
     config.active_support.deprecation = :log
 
-    config.assets.manifest = Rails.public_path.gsub('public', 'spec/fixtures')
+    config.assets.manifest = Rails.public_path.to_s.gsub('public', 'spec/fixtures')
 
     ## Asset config
 
@@ -16,6 +16,9 @@ module RetinaRailsTest
     config.assets.compress     = true
     config.assets.compile      = false
     config.assets.digest       = true
+
+    # Rails 4 will raise an error if we don't define this
+    config.secret_token        = SecureRandom.hex(30)
   end
 end
 RetinaRailsTest::Application.initialize!

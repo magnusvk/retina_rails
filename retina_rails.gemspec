@@ -26,6 +26,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'sqlite3'
   gem.add_development_dependency 'coveralls'
 
-  gem.add_dependency 'rails', '>= 3.0'
+  gem.add_dependency 'rails', '>= 4.0.0.beta1'
   gem.add_dependency 'rmagick'
 end
