@@ -46,9 +46,14 @@ eos
             retina_styles["#{key}_retina".to_sym] = ["#{width}x#{height}#{processor}", value[1]]
 
             ## Set quality convert option
-            convert_option = convert_options[key] if convert_options
-            convert_option = convert_option ? "#{convert_option} -quality #{retina_quality}" : "-quality #{retina_quality}"
-            retina_convert_options["#{key}_retina".to_sym] = convert_option
+            convert_option = convert_options[key].to_s.dup if convert_options
+            # make sure we double all the dimensions in convert options as well (such as extents)
+            if (dimension_matches = convert_option.to_s.scan(/(\d+)x(\d+)/)).present?
+              dimension_matches.each do |match|
+                convert_option.sub!(/#{match[0]}x#{match[1]}/, "#{match[0].to_i*2}x#{match[1].to_i*2}")
+              end
+            end
+            retina_convert_options["#{key}_retina".to_sym] = "#{convert_option} -quality #{retina_quality}"
 
           end
 
