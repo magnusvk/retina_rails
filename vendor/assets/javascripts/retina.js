@@ -58,7 +58,7 @@
       this.at_2x_path = at_2x_path;
       this.perform_check = false;
     } else {
-      this.at_2x_path = path.replace(/\.\w+$/, function(match) { return "@2x" + match; });
+      this.at_2x_path = path.replace(/\.\w+(?:\?\w+)$/, function(match) { return "@2x" + match; });
       this.perform_check = true;
     }
   }
