@@ -58,13 +58,13 @@ describe RetinaRails::Paperclip do
                :original => "800x800",
                :big => "125x125#"
              },
-             :path => "#{ROOT}/:class/:id/:basename_:style.:extension",
-             :url => "#{ROOT}/:class/:id/:basename_:style.:extension"
+             :path => "#{File.dirname(__FILE__)}/:class/:id/:basename_:style.:extension",
+             :url => "#{File.dirname(__FILE__)}/:class/:id/:basename_:style.:extension"
 
           include RetinaRails::Paperclip
 
         end
-      end.to raise_error(RetinaRails::Paperclip::MISCONFIGURATION_ERROR)
+      end.to raise_error(RetinaRails::MisconfiguredError)
     end
 
   end

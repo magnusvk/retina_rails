@@ -58,6 +58,8 @@ end
 ```
 By default it sets the retina image quality to 40 which can be overriden by adding a `retina_quality` option
 
+Make sure that you include the file format for all styles like so  ```:original => ["800x800", :jpg]```. Omitting it will result in a ```MisconfiguredError``` being raised.
+
 For retina images use
 ------------
 
