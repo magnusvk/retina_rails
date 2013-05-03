@@ -104,8 +104,12 @@
       if (! that.el.complete) {
         setTimeout(load, 5);
       } else {
-        that.el.setAttribute('width', that.el.offsetWidth);
-        that.el.setAttribute('height', that.el.offsetHeight);
+        if (that.el.offsetWidth > 0) {
+          that.el.setAttribute('width', that.el.offsetWidth);
+        }
+        if (that.el.offsetHeight > 0) {
+          that.el.setAttribute('height', that.el.offsetHeight);
+        }
         that.el.setAttribute('src', path);
         that.el.setAttribute('data-retina', true);
       }
